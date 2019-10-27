@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+  
+<canvas id="canvas" width="200" height="200"></canvas>
+<canvas id="canvasSnow" width="600" height="600"></canvas>
+
+<script>
+// 1. вам нужно написать функцию, которая принимает массив с точками
+//  и чертит линию, которая их соединяет.
+let canvas = document.querySelector('#canvas');
+let ctx = canvas.getContext('2d');
+
+    var points = [
+    [5, 10],
+    [15, 20],
+    [25, 30],
+    [35, 40],
+    [45, 50]
+    ];
+    
+
+    function drawArr(arr){
+        ctx.beginPath();
+        for(var i = 0; i < arr.length; i++) {
+            for(var j = 0; j < arr.length; j++){
+            console.log(arr[i][j], arr[i][j])
+            //console.log(arr[i][j], arr[i][j])
+            // ctx.moveTo(arr[i][j], arr[i][j]);
+            // ctx.lineTo(arr[++i][j], arr[++i][j])
+            }
+        }
+        // for(var k = 0; k < arr.length; k++) {
+        //     for(var l = 0; l < arr.length; l++){
+        //     console.log(arr[k][l], arr[k][l])
+        //     ctx.lineTo(arr[k][l], arr[k][l]);
+        //     }
+        // }
+
+        // ctx.moveTo(50,50);
+        // ctx.lineTo(50,100);
+        // ctx.moveTo(100,100);
+        // ctx.lineTo(100,50);
+        // ctx.moveTo(50,50);
+
+        ctx.stroke();
+    }
+       
+
+    drawArr(points);
+
+
+// 2. напишите функцию, которая рисует снеговика и принимает
+// его началные координаты и размеры. используйте функцию для рисования круга,
+// которая будет принимать параметр - булевое значение,
+// для отрисовки закрашенного или пустого круга
+
+let canvasSnow = document.querySelector('#canvasSnow');
+let snow = canvasSnow.getContext('2d');
+
+const snowParam = {
+    x: 300,
+    y: 100,
+    size: 50,
+    fill: false,
+}
+
+function drawSnow({x, y, size, fill}){
+    const head =
+        snow.beginPath();
+        snow.arc(x, y, size, 0, Math.PI *2, false);
+        snow.stroke();
+    const body =
+        snow.beginPath();
+        snow.arc(x, y + 2.5*size, size * 1.5, 0, Math.PI *2, false);
+        snow.stroke();
+    const feet =
+        snow.beginPath();
+        snow.arc(x, y + 6*size, size * 2, 0, Math.PI *2, false);
+        snow.stroke();
+    const buttons =
+        snow.beginPath();
+        snow.arc(x, 2*y, size / 8, 0, Math.PI *2, false);
+        snow.stroke();
+        fill?snow.fill():snow.stroke();       
+        snow.beginPath();
+        snow.arc(x, 3.5*y, size / 8, 0, Math.PI *2, false);
+        fill?snow.fill():snow.stroke();       
+}
+
+// drawSnow(snowParam);
+
+</script>
+</body>
+</html>
