@@ -12,48 +12,33 @@
 <canvas id="canvasSnow" width="600" height="600"></canvas>
 
 <script>
+    
 // 1. вам нужно написать функцию, которая принимает массив с точками
 //  и чертит линию, которая их соединяет.
+
 let canvas = document.querySelector('#canvas');
 let ctx = canvas.getContext('2d');
 
     var points = [
-    [5, 10],
-    [15, 20],
-    [25, 30],
-    [35, 40],
-    [45, 50]
+    [50, 50],
+    [50, 100],
+    [100, 100],
+    [100, 50],
+    [50, 50],
     ];
     
 
-    function drawArr(arr){
+
+ function drawArr(arr) {
+     const X = 0 , Y = 1;
         ctx.beginPath();
         for(var i = 0; i < arr.length; i++) {
-            for(var j = 0; j < arr.length; j++){
-            console.log(arr[i][j], arr[i][j])
-            //console.log(arr[i][j], arr[i][j])
-            // ctx.moveTo(arr[i][j], arr[i][j]);
-            // ctx.lineTo(arr[++i][j], arr[++i][j])
-            }
+            ctx.lineTo(arr[i][X],arr[i][Y]);
         }
-        // for(var k = 0; k < arr.length; k++) {
-        //     for(var l = 0; l < arr.length; l++){
-        //     console.log(arr[k][l], arr[k][l])
-        //     ctx.lineTo(arr[k][l], arr[k][l]);
-        //     }
-        // }
-
-        // ctx.moveTo(50,50);
-        // ctx.lineTo(50,100);
-        // ctx.moveTo(100,100);
-        // ctx.lineTo(100,50);
-        // ctx.moveTo(50,50);
-
         ctx.stroke();
-    }
-       
+    }       
 
-    drawArr(points);
+drawArr(points);
 
 
 // 2. напишите функцию, которая рисует снеговика и принимает
@@ -68,7 +53,7 @@ const snowParam = {
     x: 300,
     y: 100,
     size: 50,
-    fill: false,
+    fill: true,
 }
 
 function drawSnow({x, y, size, fill}){
@@ -94,7 +79,7 @@ function drawSnow({x, y, size, fill}){
         fill?snow.fill():snow.stroke();       
 }
 
-// drawSnow(snowParam);
+drawSnow(snowParam);
 
 </script>
 </body>
